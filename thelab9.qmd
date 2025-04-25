@@ -1,6 +1,6 @@
 ---
+title: "Lab9 - Final Project Results"
 project:
-  title: "Lab9 - Final Project Results"
   output-dir: docs
   type: website
 author: Jake Matullo and Jessica Magalit
