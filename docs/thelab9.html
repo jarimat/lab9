@@ -4853,15 +4853,14 @@ filtered_staneydischarge &lt;- staney_discharge %&gt;%
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(<span class="sc">~</span> <span class="sc">!</span><span class="fu">all</span>(<span class="fu">is.na</span>(.))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(discharge)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slice_head</span>(discharge, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        Date Staney_Discharge Hatchery_Discharge
 1 2016-10-26             92.0              134.0
 2 2016-10-27             73.3               98.3
 3 2016-10-28             62.6               71.9
 4 2016-10-29             54.4               54.2
-5 2016-10-30             48.5               43.1
-6 2016-10-31             43.8               35.4</code></pre>
+5 2016-10-30             48.5               43.1</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -4915,15 +4914,14 @@ Removed 2737 rows containing missing values or values outside the scale range
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Date <span class="sc">&gt;=</span> <span class="fu">as.Date</span>(<span class="st">&quot;2016-10-26&quot;</span>) <span class="sc">&amp;</span> Date <span class="sc">&lt;=</span> <span class="fu">as.Date</span>(<span class="st">&quot;2025-04-23&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(staney_baseflow)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slice_head</span>(staney_baseflow, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        Date Staney_Discharge Staney_Baseflow
 1 2016-10-26             92.0        76.74345
 2 2016-10-27             73.3        72.56177
 3 2016-10-28             62.6        62.60000
 4 2016-10-29             54.4        54.40000
-5 2016-10-30             48.5        48.50000
-6 2016-10-31             43.8        43.80000</code></pre>
+5 2016-10-30             48.5        48.50000</code></pre>
 </div>
 </div>
 <p>Below is a plot of the flow type for Staney Creek, shortened to a one-year timespan for clarity:</p>
@@ -5252,15 +5250,14 @@ Removed 2706 rows containing non-finite outside the scale range
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Date <span class="sc">&gt;=</span> <span class="fu">as.Date</span>(<span class="st">&quot;2016-10-26&quot;</span>) <span class="sc">&amp;</span> Date <span class="sc">&lt;=</span> <span class="fu">as.Date</span>(<span class="st">&quot;2025-04-23&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(hatchery_baseflow)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slice_head</span>(hatchery_baseflow, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        Date Hatchery_Discharge Hatchery_Baseflow
 1 2016-10-26              134.0          30.76741
 2 2016-10-27               98.3          30.06021
 3 2016-10-28               71.9          28.99639
 4 2016-10-29               54.2          27.79427
-5 2016-10-30               43.1          26.57087
-6 2016-10-31               35.4          25.33247</code></pre>
+5 2016-10-30               43.1          26.57087</code></pre>
 </div>
 </div>
 <p>Below is a plot of the flow type for Hatchery Creek, shortened to a one-year timespan for clarity:</p>
@@ -5613,15 +5610,14 @@ Removed 2734 rows containing non-finite outside the scale range
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(stream_temps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slice_head</span>(stream_temps, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        Date Hatchery_Temperature Staney_Temperature
 1 2017-04-25                 11.4                6.9
 2 2017-04-26                 11.0                7.6
 3 2017-04-27                 10.2                6.5
 4 2017-04-28                 10.3                5.9
-5 2017-04-29                  9.9                5.2
-6 2017-04-30                 10.0                6.2</code></pre>
+5 2017-04-29                  9.9                5.2</code></pre>
 </div>
 </div>
 <div class="cell">

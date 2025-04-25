@@ -61,7 +61,7 @@ discharge <- full_join(filtered_staneydischarge, hatchery_discharge, by = "Date"
 ```
 
 ```{r}
-head(discharge)
+slice_head(discharge, n = 5)
 ```
 
 ```{r}
@@ -94,7 +94,7 @@ staney_baseflow = staney_discharge %>%
 ```
 
 ```{r}
-head(staney_baseflow)
+slice_head(staney_baseflow, n = 5)
 ```
 
 Below is a plot of the flow type for Staney Creek, shortened to a one-year timespan for clarity:
@@ -116,7 +116,7 @@ hatchery_baseflow <- hatchery_discharge %>%
 ```
 
 ```{r}
-head(hatchery_baseflow)
+slice_head(hatchery_baseflow, n = 5)
 ```
 
 Below is a plot of the flow type for Hatchery Creek, shortened to a one-year timespan for clarity:
@@ -161,7 +161,7 @@ stream_temps <- full_join(filtered_hatcherytemp, filtered_staneytemp, by = "Date
 ```
 
 ```{r}
-head(stream_temps)
+slice_head(stream_temps, n = 5)
 ```
 
 ```{r}
