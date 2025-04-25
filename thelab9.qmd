@@ -49,7 +49,6 @@ hatchery_discharge <- readNWISdv(siteNumber = "15086225",
   select(Date, Hatchery_Discharge = X_00060_00003)
 ```
 
-```
 ```{r}
 filtered_staneydischarge <- staney_discharge %>%
   filter(Date >= as.Date("2016-10-26") & Date <= as.Date("2025-04-23"))

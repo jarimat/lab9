@@ -4842,12 +4842,10 @@ The following objects are masked from &#39;package:stats&#39;:
 <pre><code>GET:https://waterservices.usgs.gov/nwis/dv/?site=15086225&amp;format=waterml%2C1.1&amp;ParameterCd=00060&amp;StatCd=00003&amp;startDT=1851-01-01</code></pre>
 </div>
 </div>
-<pre><code>::: {.cell}
-
-```{.r .cell-code}
-filtered_staneydischarge &lt;- staney_discharge %&gt;%
-  filter(Date &gt;= as.Date(&quot;2016-10-26&quot;) &amp; Date &lt;= as.Date(&quot;2025-04-23&quot;))</code></pre>
-<p>:::</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>filtered_staneydischarge <span class="ot">&lt;-</span> staney_discharge <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Date <span class="sc">&gt;=</span> <span class="fu">as.Date</span>(<span class="st">&quot;2016-10-26&quot;</span>) <span class="sc">&amp;</span> Date <span class="sc">&lt;=</span> <span class="fu">as.Date</span>(<span class="st">&quot;2025-04-23&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>discharge <span class="ot">&lt;-</span> <span class="fu">full_join</span>(filtered_staneydischarge, hatchery_discharge, <span class="at">by =</span> <span class="st">&quot;Date&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(<span class="sc">~</span> <span class="sc">!</span><span class="fu">all</span>(<span class="fu">is.na</span>(.))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
