@@ -19,7 +19,7 @@ For over three-quarters of a century, the Tongass has been subjected to industri
 
 **Materials**
 
-	The two chosen stream sites were found through the USGS National Water Information System: Mapper tool, which shows different water monitoring sites across the nation. They are USGS sites 15081497 at Staney Creek and 15086225 at Hatchery Creek. The Staney Creek site started conducting water discharge measurements in 1989 and water quality measurements in 1990, while the Hatchery Creek site began conducting water discharge measurements in 2016 and water quality measurements in 2017. All three data sources above have tables to work off of.For each, we will be examining daily water discharge rates and daily water temperature readings.
+The two chosen stream sites were found through the USGS National Water Information System: Mapper tool, which shows different water monitoring sites across the nation. They are USGS sites 15081497 at Staney Creek and 15086225 at Hatchery Creek. The Staney Creek site started conducting water discharge measurements in 1989 and water quality measurements in 1990, while the Hatchery Creek site began conducting water discharge measurements in 2016 and water quality measurements in 2017. All three data sources above have tables to work off of.For each, we will be examining daily water discharge rates and daily water temperature readings.
 	
 **Methods/Results**
 
@@ -61,6 +61,10 @@ discharge <- full_join(filtered_staneydischarge, hatchery_discharge, by = "Date"
 ```
 
 ```{r}
+head(discharge)
+```
+
+```{r}
 ggplot(discharge, aes(x = Date)) +
   geom_line(aes(y = Hatchery_Discharge, color = "Hatchery Streamflow"), linewidth = 1) +
   geom_line(aes(y = Staney_Discharge, color = "Staney Streamflow"), linewidth = 1) +
@@ -81,12 +85,16 @@ ggplot(discharge, aes(x = Date)) +
        color = "Variable") +
   theme_minimal()  
 ```
-**Stream Flow Flashiness**
+**Stream Flow Flashiness/Baseflow**
 
 ```{r}
 staney_baseflow = staney_discharge %>% 
   mutate(Staney_Baseflow = gr_baseflow(Staney_Discharge, method = 'jakeman')) %>%
   filter(Date >= as.Date("2016-10-26") & Date <= as.Date("2025-04-23"))
+```
+
+```{r}
+head(staney_baseflow)
 ```
 
 Below is a plot of the flow type for Staney Creek, shortened to a one-year timespan for clarity:
@@ -100,10 +108,15 @@ ggplot(staney_baseflow) +
   theme_minimal() +
   labs(fill = "Flow Type")
 ```
+
 ```{r}
 hatchery_baseflow <- hatchery_discharge %>% 
   mutate(Hatchery_Baseflow = gr_baseflow(Hatchery_Discharge, method = 'jakeman')) %>%
   filter(Date >= as.Date("2016-10-26") & Date <= as.Date("2025-04-23"))
+```
+
+```{r}
+head(hatchery_baseflow)
 ```
 
 Below is a plot of the flow type for Hatchery Creek, shortened to a one-year timespan for clarity:
@@ -131,7 +144,6 @@ filtered_staneytemp <- staney_temp %>%
   filter(Date >= as.Date("2017-04-25") & Date <= as.Date("2025-04-23"))
 ```
 
-
 ```{r}
 hatchery_temp <- readNWISdv(siteNumber = "15086225",
                             parameterCd = "00010") %>%
@@ -142,10 +154,16 @@ hatchery_temp <- readNWISdv(siteNumber = "15086225",
 filtered_hatcherytemp <- hatchery_temp %>%
   filter(Date >= as.Date("2017-04-25") & Date <= as.Date("2025-04-23"))
 ```
+
 ```{r}
 stream_temps <- full_join(filtered_hatcherytemp, filtered_staneytemp, by = "Date") %>%
   arrange(Date)
 ```
+
+```{r}
+head(stream_temps)
+```
+
 ```{r}
 ggplot(stream_temps, aes(x = Date)) +
   geom_line(aes(y = Hatchery_Temperature, color = "Hatchery Water Temperature"), linewidth = 1) +
