@@ -11,6 +11,18 @@ execute:
   echo: true
 ---
 
+**Introduction**
+
+The Tongass National Forest is the largest national forest in the United States, covering nearly seventeen million acres. That covers a majority of the Alaska Panhandle and is dispersed over hundreds of islands. These islands form part of what is referred to as the Inside Passage, which is the coastal seaway that runs along much of the the North Pacific coast and is often sheltered by many islands and fjords (Smith 2017). It has long been home to a variety of Native American peoples, most notably the Tlingit and the Haida peoples. Out of all these facts about the Tongass National Forest, arguably the most notable is that it also houses some of the most expansive tracts of old-growth temperate rainforest left on Earth. These are areas of immense primary productivity and critical habitat for grey wolves, black and brown bears, various seabirds, and as spawning grounds for many different species of salmon (Noss 2021). It is also a major carbon sink - one of the largest in the United States, alone holding up to 44% of the carbon stored in the nation’s national forests (Elfar 2024).
+
+For over three-quarters of a century, the Tongass has been subjected to industrial logging for its rich stands of western hemlock, sitka spruce, and different cedar species. Many areas - such as Prince of Wales Island - have since been subjected to heavy clearcut logging. In response, the Roadless Rule was enacted in 2001, which forbade both new road construction as well as new logging operations from being conducted. However, this protection has come under fire during both Trump administrations. Early in March, Trump issued two executive orders allowing for more logging within the United States’ national forests, which itself came after his suspension of the Roadless Rule in Alaska (Soliman 2025). The difference in the ecology between the remaining old-growth forest and the new secondary forest created by logging cannot be understated. It takes hundreds of years for forests in the Tongass to reach the level of biodiversity and ecological complexity commonly exhibited by old-growth tracts (Carstensen 2015). This has long-lasting and far-reaching impacts on many different parts of the ecosystem. In this examination of raw data collected throughout the Tongass, we want to compare and contrast the differences in water quality and water discharge between two streams on the Prince of Wales Island; one in a watershed that was heavily logged in the 1970s, and one that is in a relatively preserved watershed. By doing so, we hope to illustrate how important protecting the Tongass National Forest is to the health of the rainforest ecosystem and further champion its designation as a land under the protection of the Roadless Rule.
+
+**Materials**
+
+	The two chosen stream sites were found through the USGS National Water Information System: Mapper tool, which shows different water monitoring sites across the nation. They are USGS sites 15081497 at Staney Creek and 15086225 at Hatchery Creek. The Staney Creek site started conducting water discharge measurements in 1989 and water quality measurements in 1990, while the Hatchery Creek site began conducting water discharge measurements in 2016 and water quality measurements in 2017. All three data sources above have tables to work off of.For each, we will be examining daily water discharge rates and daily water temperature readings.
+	
+**Methods/Results**
+
 ```{r}
 library(tidyverse)
 library(tidyr)
@@ -105,7 +117,6 @@ ggplot(hatchery_baseflow) +
   theme_minimal() +
   labs(fill = "Flow Type")
 ```
-As we can see, the difference between the baseflow and overall discharge for Hatchery Creek is much less than the difference in baseflow and overall discharge for Staney Creek. This is partially due to the spikes in discharge Staney Creek experiences, which is a result of its high flashiness. The high flashiness could itself likely be a result of the deforestation the watershed experienced, meaning that the soil had less living roots to absorb high amounts of rainfall. A lot of that rainfall - more than otherwise - then entered the creek, resulting in these quick spikes in flow.
 
 **Stream Temperature**
 
@@ -147,7 +158,7 @@ ggplot(stream_temps, aes(x = Date)) +
 
 **Discussion**
 
-Our results show clear differences between Staney Creek (the disturbed site) and Hatchery Creek (the undisturbed site), especially in terms of streamflow. Staney Creek has higher and more variable streamflow, which likely reflects the long-term effects of deforestation in the area. When forests are cleared, there’s often less vegetation and living root networks to absorb rainwater, which can lead to more surface runoff and bigger spikes in streamflow during storms. This pattern suggests that the disturbed watershed responds more intensely to precipitation, which could increase erosion and make habitats less stable.
+Our results show clear differences between Staney Creek (the disturbed site) and Hatchery Creek (the undisturbed site), especially in terms of streamflow. As we can see, the difference between the baseflow and overall discharge for Hatchery Creek is much less than the difference in baseflow and overall discharge for Staney Creek. This is partially due to the spikes in discharge Staney Creek experiences, which is a result of its high flashiness. This likely reflects the long-term effects of deforestation in the area. When forests are cleared, there’s often less vegetation and living root networks to absorb rainwater, which can lead to more surface runoff and bigger spikes in streamflow during storms. This pattern suggests that the disturbed watershed responds more intensely to precipitation, which could increase erosion and make habitats less stable.
 
 When it comes to water temperature, both creeks show similar seasonal trends, with temperatures rising in the summer and falling in the winter. However, Staney Creek sometimes has slightly cooler summer temperatures, which was surprising. Disturbed areas usually have warmer water because there’s less shade from trees. This difference might be explained by factors like stream depth, groundwater input, or forest regrowth providing some shade.
 
