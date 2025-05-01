@@ -62,6 +62,7 @@ discharge <- full_join(filtered_staneydischarge, hatchery_discharge, by = "Date"
 ```{r}
 slice_head(discharge, n = 5)
 ```
+**Figure 1.** Above are a few data readings for the streamflows for Staney Creek and Hatchery Creek, taken in cubic feet per second.
 
 ```{r}
 ggplot(discharge, aes(x = Date)) +
@@ -72,7 +73,8 @@ ggplot(discharge, aes(x = Date)) +
        color = "Variable") +
   theme_minimal()
 ```
-Below is another chart of the same data, shortened to a one-year timespan for clarity:
+
+**Figure 2.** Above is streamflow data for the two creeks taken between 2016 and 2025. Notice how Staney Creek has consistently much higher flow than Hatchery Creek, barring only a few dates.
 
 ```{r}
 ggplot(discharge, aes(x = Date)) +
@@ -84,6 +86,9 @@ ggplot(discharge, aes(x = Date)) +
        color = "Variable") +
   theme_minimal()  
 ```
+**Figure 3.** Below is another chart of the same data, shortened to a one-year timespan for clarity.
+
+
 **Stream Flow Flashiness/Baseflow**
 
 ```{r}
@@ -95,8 +100,7 @@ staney_baseflow = staney_discharge %>%
 ```{r}
 slice_head(staney_baseflow, n = 5)
 ```
-
-Below is a plot of the flow type for Staney Creek, shortened to a one-year timespan for clarity:
+**Figure 4.** Above is a table showing the difference in overall flow and baseflow for Staney Creek.
 
 ```{r}
 ggplot(staney_baseflow) +
@@ -107,6 +111,7 @@ ggplot(staney_baseflow) +
   theme_minimal() +
   labs(fill = "Flow Type")
 ```
+**Figure 5.** Above is a plot of the flow type for Staney Creek, showing only data from 2022 for clarity.
 
 ```{r}
 hatchery_baseflow <- hatchery_discharge %>% 
@@ -117,8 +122,7 @@ hatchery_baseflow <- hatchery_discharge %>%
 ```{r}
 slice_head(hatchery_baseflow, n = 5)
 ```
-
-Below is a plot of the flow type for Hatchery Creek, shortened to a one-year timespan for clarity:
+**Figure 6.** Above is a table showing the difference in overall flow and baseflow for Hatchery Creek.
 
 ```{r}
 ggplot(hatchery_baseflow) +
@@ -129,6 +133,8 @@ ggplot(hatchery_baseflow) +
   theme_minimal() +
   labs(fill = "Flow Type")
 ```
+**Figure 7.** Above is a plot of the flow type for Hatchery Creek, showing only data from 2022 for clarity.
+
 
 **Stream Temperature**
 
@@ -162,6 +168,7 @@ stream_temps <- full_join(filtered_hatcherytemp, filtered_staneytemp, by = "Date
 ```{r}
 slice_head(stream_temps, n = 5)
 ```
+**Figure 8.** Above are temperature readings for Hatchery Creek and Staney Creek.
 
 ```{r}
 ggplot(stream_temps, aes(x = Date)) +
@@ -172,6 +179,8 @@ ggplot(stream_temps, aes(x = Date)) +
        color = "Variable") +
   theme_minimal()
 ```
+**Figure 9.** Above is a graph of temperature readings for Staney Creek and Hatchery Creek, taken between 2017 and 2025.
+
 
 **Discussion**
 
