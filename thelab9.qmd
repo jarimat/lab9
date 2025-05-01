@@ -68,6 +68,7 @@ slice_head(discharge, n = 5)
 ggplot(discharge, aes(x = Date)) +
   geom_line(aes(y = Hatchery_Discharge, color = "Hatchery Streamflow"), linewidth = 1) +
   geom_line(aes(y = Staney_Discharge, color = "Staney Streamflow"), linewidth = 1) +
+  scale_color_manual(values = c("Hatchery Streamflow" = "royalblue", "Staney Streamflow" = "tomato")) +
   labs(title = "Hatchery Creek and Staney Creek Daily Streamflow",
        y = "Cubic Feet per Second",
        color = "Variable") +
@@ -80,6 +81,7 @@ ggplot(discharge, aes(x = Date)) +
 ggplot(discharge, aes(x = Date)) +
   geom_line(aes(y = Hatchery_Discharge, color = "Hatchery Streamflow"), linewidth = 1) +
   geom_line(aes(y = Staney_Discharge, color = "Staney Streamflow"), linewidth = 1) +
+  scale_color_manual(values = c("Hatchery Streamflow" = "royalblue", "Staney Streamflow" = "tomato")) +
   scale_x_date(limits = c(ymd(20220101), ymd(20230101))) +
   labs(title = "Hatchery Creek and Staney Creek Daily Streamflow",
        y = "Cubic Feet per Second",
@@ -106,12 +108,15 @@ slice_head(staney_baseflow, n = 5)
 ggplot(staney_baseflow) +
   geom_area(aes(Date, Staney_Discharge, fill = "Discharge"), color = 'black') +
   geom_area(aes(Date, Staney_Baseflow, fill = "Baseflow"), color = 'black') +
-  scale_fill_manual(values = c("Discharge" = "steelblue", "Baseflow" = "orangered")) +
-  scale_x_date(limits = c(ymd(20220101), ymd(20230101)))
+  scale_fill_manual(values = c("Discharge" = "royalblue", "Baseflow" = "blue4")) +
+  scale_x_date(limits = c(ymd(20220101), ymd(20230101))) +
   theme_minimal() +
-  labs(fill = "Flow Type")
+  labs(title = "Staney Creek Flow Type",
+       y = "Cubic Feet per Second",
+       color = "Variable",
+       fill = "Flow Type")
 ```
-**Figure 5.** Above is a plot of the flow type for Staney Creek, showing only data from 2022 for clarity.
+**Figure 5.** Above is a plot of the flow type for Staney Creek, showing only data from 2022 for clarity. It shows a data range of 0 to 5500 cubic feet per second in order to fit all of the data in.
 
 ```{r}
 hatchery_baseflow <- hatchery_discharge %>% 
@@ -128,12 +133,15 @@ slice_head(hatchery_baseflow, n = 5)
 ggplot(hatchery_baseflow) +
   geom_area(aes(Date, Hatchery_Discharge, fill = "Discharge"), color = 'black') +
   geom_area(aes(Date, Hatchery_Baseflow, fill = "Baseflow"), color = 'black') +
-  scale_fill_manual(values = c("Discharge" = "steelblue", "Baseflow" = "orangered")) +
-  scale_x_date(limits = c(ymd(20220101), ymd(20230101)))
+  scale_fill_manual(values = c("Discharge" = "royalblue", "Baseflow" = "blue4")) +
+  scale_x_date(limits = c(ymd(20220101), ymd(20230101))) +
   theme_minimal() +
-  labs(fill = "Flow Type")
+  labs(title = "Hatchery Creek Flow Type",
+       y = "Cubic Feet per Second",
+       color = "Variable",
+       fill = "Flow Type")
 ```
-**Figure 7.** Above is a plot of the flow type for Hatchery Creek, showing only data from 2022 for clarity.
+**Figure 7.** Above is a plot of the flow type for Hatchery Creek, showing only data from 2022 for clarity. It shows a data range of 0 to 2500 cubic feet per second in order to make the graph easier to read.
 
 
 **Stream Temperature**
@@ -174,6 +182,7 @@ slice_head(stream_temps, n = 5)
 ggplot(stream_temps, aes(x = Date)) +
   geom_line(aes(y = Hatchery_Temperature, color = "Hatchery Water Temperature"), linewidth = 1) +
   geom_line(aes(y = Staney_Temperature, color = "Staney Water Temperature"), linewidth = 1) +
+   scale_color_manual(values = c("Hatchery Water Temperature" = "royalblue", "Staney Water Temperature" = "tomato")) +
   labs(title = "Hatchery Creek and Staney Creek Water Temperature",
        y = "degrees Celsius",
        color = "Variable") +
