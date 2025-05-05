@@ -60,7 +60,7 @@ discharge <- full_join(filtered_staneydischarge, hatchery_discharge, by = "Date"
 ```
 
 ```{r}
-slice_head(discharge, n = 5)
+slice_head(discharge, n = 20)
 ```
 **Figure 1.** Above are a few data readings for the streamflows for Staney Creek and Hatchery Creek, taken in cubic feet per second.
 
