@@ -116,7 +116,7 @@ ggplot(staney_baseflow) +
        color = "Variable",
        fill = "Flow Type")
 ```
-**Figure 5.** Above is a plot of the flow type for Staney Creek, showing only data from 2022 for clarity. It shows a data range of 0 to 5500 cubic feet per second in order to fit all of the data in.
+**Figure 5.** Above is a plot of the flow type for Staney Creek, showing only data from 2022 for clarity. Notice how its data range surpasses 5000 cubic feet per second.
 
 ```{r}
 hatchery_baseflow <- hatchery_discharge %>% 
@@ -135,13 +135,14 @@ ggplot(hatchery_baseflow) +
   geom_area(aes(Date, Hatchery_Baseflow, fill = "Baseflow"), color = 'black') +
   scale_fill_manual(values = c("Discharge" = "royalblue", "Baseflow" = "blue4")) +
   scale_x_date(limits = c(ymd(20220101), ymd(20230101))) +
+  ylim(0, 5000) + 
   theme_minimal() +
   labs(title = "Hatchery Creek Flow Type",
        y = "Cubic Feet per Second",
        color = "Variable",
        fill = "Flow Type")
 ```
-**Figure 7.** Above is a plot of the flow type for Hatchery Creek, showing only data from 2022 for clarity. It shows a data range of 0 to 2500 cubic feet per second in order to make the graph easier to read.
+**Figure 7.** Above is a plot of the flow type for Hatchery Creek, showing only data from 2022 for clarity. Notice how its data range doesn't surpass even 2,500 cubic feet per second, less than half of the maximum data points for Staney Creek.
 
 
 **Stream Temperature**
