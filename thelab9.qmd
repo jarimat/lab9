@@ -48,10 +48,17 @@ hatchery_discharge <- readNWISdv(siteNumber = "15086225",
                             parameterCd = "00060") %>%
   select(Date, Hatchery_Discharge = X_00060_00003)
 ```
+```{r}
+hatchery_discharge[, c("Hatchery_Discharge")] <- hatchery_discharge[, c("Hatchery_Discharge")] / 39
+```
 
 ```{r}
 filtered_staneydischarge <- staney_discharge %>%
   filter(Date >= as.Date("2016-10-26") & Date <= as.Date("2025-04-23"))
+```
+
+```{r}
+filtered_staneydischarge[, c("Staney_Discharge")] <- filtered_staneydischarge[, c("Staney_Discharge")] / 48.9
 ```
 
 ```{r}
@@ -62,7 +69,7 @@ discharge <- full_join(filtered_staneydischarge, hatchery_discharge, by = "Date"
 ```{r}
 slice_head(discharge, n = 20)
 ```
-**Figure 1.** Above are a few data readings for the streamflows for Staney Creek and Hatchery Creek, taken in cubic feet per second.
+**Figure 1.** Above are a few data readings for the streamflows for Staney Creek and Hatchery Creek, taken in cubic feet per second per square mile. The data was in a cubic feet per second format, and the calculations to make it cubic feet per second per square mile were done in order to take the differing sizes of each watershed into consideration.
 
 ```{r}
 ggplot(discharge, aes(x = Date)) +
@@ -70,7 +77,7 @@ ggplot(discharge, aes(x = Date)) +
   geom_line(aes(y = Staney_Discharge, color = "Staney Streamflow"), linewidth = 1) +
   scale_color_manual(values = c("Hatchery Streamflow" = "royalblue", "Staney Streamflow" = "tomato")) +
   labs(title = "Hatchery Creek and Staney Creek Daily Streamflow",
-       y = "Cubic Feet per Second",
+       y = "Cubic Feet per Second per Square Mile",
        color = "Variable") +
   theme_minimal()
 ```
@@ -84,7 +91,7 @@ ggplot(discharge, aes(x = Date)) +
   scale_color_manual(values = c("Hatchery Streamflow" = "royalblue", "Staney Streamflow" = "tomato")) +
   scale_x_date(limits = c(ymd(20220101), ymd(20230101))) +
   labs(title = "Hatchery Creek and Staney Creek Daily Streamflow",
-       y = "Cubic Feet per Second",
+       y = "Cubic Feet per Second per Square Mile",
        color = "Variable") +
   theme_minimal()  
 ```
@@ -94,7 +101,7 @@ ggplot(discharge, aes(x = Date)) +
 **Stream Flow Flashiness/Baseflow**
 
 ```{r}
-staney_baseflow = staney_discharge %>% 
+staney_baseflow = filtered_staneydischarge %>% 
   mutate(Staney_Baseflow = gr_baseflow(Staney_Discharge, method = 'jakeman')) %>%
   filter(Date >= as.Date("2016-10-26") & Date <= as.Date("2025-04-23"))
 ```
@@ -111,13 +118,13 @@ ggplot(staney_baseflow) +
   scale_fill_manual(values = c("Discharge" = "royalblue", "Baseflow" = "blue4")) +
   scale_x_date(limits = c(ymd(20220101), ymd(20230101))) +
   theme_minimal() +
-  ylim(0, 5250) + 
+  ylim(0, 125) + 
   labs(title = "Staney Creek Flow Type",
-       y = "Cubic Feet per Second",
+       y = "Cubic Feet per Second per Square Mile",
        color = "Variable",
        fill = "Flow Type")
 ```
-**Figure 5.** Above is a plot of the flow type for Staney Creek, showing only data from 2022 for clarity. Notice how its data range surpasses 5000 cubic feet per second.
+**Figure 5.** Above is a plot of the flow type for Staney Creek, showing only data from 2022 for clarity. Notice how its data range surpasses 100 cubic feet per second per square mile.
 
 ```{r}
 hatchery_baseflow <- hatchery_discharge %>% 
@@ -136,14 +143,14 @@ ggplot(hatchery_baseflow) +
   geom_area(aes(Date, Hatchery_Baseflow, fill = "Baseflow"), color = 'black') +
   scale_fill_manual(values = c("Discharge" = "royalblue", "Baseflow" = "blue4")) +
   scale_x_date(limits = c(ymd(20220101), ymd(20230101))) +
-  ylim(0, 5250) + 
+  ylim(0, 125) + 
   theme_minimal() +
   labs(title = "Hatchery Creek Flow Type",
-       y = "Cubic Feet per Second",
+       y = "Cubic Feet per Second per Square Mile",
        color = "Variable",
        fill = "Flow Type")
 ```
-**Figure 7.** Above is a plot of the flow type for Hatchery Creek, showing only data from 2022 for clarity. Notice how its data range doesn't surpass even 2,500 cubic feet per second, less than half of the maximum data points for Staney Creek.
+**Figure 7.** Above is a plot of the flow type for Hatchery Creek, showing only data from 2022 for clarity. Notice how its data range doesn't surpass even 60 cubic feet per second per square mile, a little over half of the maximum in the data range for Staney Creek.
 
 
 **Stream Temperature**
