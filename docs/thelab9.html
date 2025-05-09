@@ -4883,7 +4883,7 @@ The following objects are masked from &#39;package:stats&#39;:
 20 2016-11-14       14.7034765         10.3589744</code></pre>
 </div>
 </div>
-<p><strong>Figure 1.</strong> Above are a few data readings for the streamflows for Staney Creek and Hatchery Creek, taken in cubic feet per second per square mile. The data was in a cubic feet per second format, and the calculations to make it cubic feet per second per square mile were done in order to take the differing sizes of each watershed into consideration.</p>
+<p><strong>Figure 1.</strong> Above are a few data readings for the streamflows for Staney Creek and Hatchery Creek, taken in cubic feet per second per square mile. The data was already in a cubic feet per second format, and the calculations to make it cubic feet per second per square mile were done in order to take the differing sizes of each watershed into consideration.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(discharge, <span class="fu">aes</span>(<span class="at">x =</span> Date)) <span class="sc">+</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> Hatchery_Discharge, <span class="at">color =</span> <span class="st">&quot;Hatchery Streamflow&quot;</span>), <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
