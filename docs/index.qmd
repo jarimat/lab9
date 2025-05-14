@@ -1,0 +1,14 @@
+---
+title: "Lab9 - Final Project Results"
+project:
+  output-dir: docs
+  type: website
+author: Jake Matullo and Jessica Magalit
+bibliography: references.bib
+format:
+  html:
+    self-contained: true
+execute:
+  echo: true
+---
+
